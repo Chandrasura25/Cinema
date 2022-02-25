@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <input type="number" name="" id="input">
+        <button onclick="butt()">Grade Student</button>
+        <div id="div"></div>
+    </section>
+    <script>
+    function butt(){
+     if (input.value <0){
+        div.innerText ="Out of range";
+     }
+     else if(input.value <=39){
+        div.innerText ="fail";
+     }
+     else if(input.value <=49){
+        div.innerText ="poor";
+     }
+     else if(input.value <=59){
+        div.innerText ="Average";
+     }
+     else if(input.value <=69){
+        div.innerText ="Good";
+     }
+     else if(input.value <=79){
+        div.innerText ="Very Good ";
+     }
+     else if(input.value <=100){
+        div.innerText ="excellent";
+     }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking a seat</title>
+</head>
+<body>
+    <div>
+   <ul id="users">
+
+   </ul>
+    </div>
+    <script>
+         lperson= window.localStorage.getItem("documentation");
+        var person =JSON.parse(lperson); 
+        console.log(person);
+        let people = person.Document;
+        let users = '';
+        // console.log(people.name);
+        if(people.length){
+          for(var i=0; i<people.length;i++){
+            users += `<li>${people[i].fullname} - ${people[i].email}</li>`
+            }
+          }else{
+              document.getElementById("users").innerHTML =  '';
+            }
+          document.getElementById("users").innerHTML =  users;
+          // console.log(people);
+        
+        
+    </script>
+</body>
+</html>

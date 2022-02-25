@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    
+</head>
+<body>
+    <div>
+        <span>Login Page</span><br>
+        <label for="Fullname">Fullname</label><br>
+        <input type="text" name="" placeholder="fullname" id="fullN"><br>
+        <label for="password">Password</label><br>
+        <input type="text" name="" placeholder="password" id="passW"><br>
+        <button id="logg" onclick="logging()">Login</button>
+    </div>
+    <script>
+        logging = () =>
+        {
+           let people=JSON.parse(window.localStorage.getItem("documentation"));
+           let lperson =people.Document;
+           let Fullname = fullN.value;
+           let Password = passW.value;
+           for(let i=0; i < lperson.length; i++)
+          {
+            if (lperson[i].fullname==Fullname && lperson[i].password==Password )
+            {
+                alert("welcome");
+                 location.replace("CINEMAPAGE.html");
+                break;
+            }
+        }
+           if (Fullname == ""|| Password =="") {
+              alert("fill your password or email");
+                    location.reload();
+            }
+            else if(lperson.fullname!=Fullname||lperson.password!=Password){
+                   alert("wrong password or email");
+                  
+               }
+     
+        }
+    </script>
+   <style>
+       span{
+           font-size: 23px;
+           font-family:  sans-serif;
+           margin-left: 50px;
+       }
+       div{
+          box-shadow: 5px grey;
+           border-radius: 15px;
+           margin: 100px auto;
+           height: 300px;
+           padding: 30px;
+           width: 280px;
+           font-size: 20px;
+           background: linear-gradient(to right,transparent,lightblue);
+       }
+      input{
+          width: 250px;
+          height: 25px;
+          border-radius: 10px;
+          margin-top: -20px;
+      } 
+     label{
+        display: block;
+        margin-top: 20px;
+     }
+    button{
+           height: 30px;
+           font-family: fantasy;
+           margin-left: 100px;
+           margin-top: 30px;
+       }
+       button:hover{
+           cursor: pointer;
+       }
+   </style>
+</body>
+</html>

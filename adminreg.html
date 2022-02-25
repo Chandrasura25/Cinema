@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+</head>
+<body>
+    <div>
+      <b>Register</b><br>
+  <label for="name">Fullname</label><br>
+  <input type="text" name="" id="fN"><br><br>
+  <label for="email">Email</label><br>
+  <input type="email" name="" id="ema" placeholder="abcd@gmail.com"><br><br>
+ <label for="number">Number</label><br>
+ <input type="number" name="" id="No" placeholder="phone number"><br><br>
+ <label for="password">Password</label><br>
+ <input type="text" name="" id="pass"><br><br>
+ <label for="Re-password">Re-password</label><br>
+ <input type="text" name="" id="pass1"><br><br>
+ <button onclick="register()">Register</button>
+ <button id="login" onclick="login()">Login</button>
+    </div>
+    <Script>
+         if (! window.localStorage.documentation){
+             var documentation={"Document":[]} ;
+             fN.focus();
+         }
+      register = () => {
+          if (window.localStorage.documentation){
+            let people=  window.localStorage.getItem("documentation")
+              documentation=JSON.parse(people);
+          }
+          documentation.Document.push( {"fullname":fN.value,"email":ema.value, "number":No.value,"password":pass.value, "password1":pass1.value});
+         pJSON =JSON.stringify(documentation);
+         window.localStorage.setItem("documentation",pJSON );
+           location.reload()
+    } 
+    login=()=>{
+        if(confirm("have you registered?")){
+
+            location.replace("adminlogin.html");
+        }
+    }
+    </script>
+      <!-- alert("congratulation"+ " "+ person.fullname +" "+ "on your successful registration for your quest to the cinema.");
+    console.log(documentation); -->
+    <style>
+        #login{
+            margin-top: -20px;
+            margin-left: 40px;
+        }
+        b{
+        font-size: 35px;
+        display: block;
+        margin: 10px;
+        }
+        div{
+            border: 2px solid black;
+            margin: 50px auto;
+            height: 400px;
+            width: 290px;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: black;
+            color: wheat;
+        }
+       input{
+           width: 250px;
+           border-radius: 15px;
+       }
+       button{
+           height: 30px;
+           font-family: fantasy;
+           margin-left: 200px;
+       }
+       button:hover{
+           cursor: pointer;
+       }
+    </style>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     Enter the number of chairs <input type="text" name="" id="nofc">
+    <button onclick="chair()">Arrange Chairs</button>
+    <table id="hall"></table>
+    <script>
+        function chair() {
+            var u=nofc.value;
+            var hallchairs;
+            hallchairs  = "<tr>";
+            for(i=0;i<u; i++){
+               hallchairs +="<td><img src='/Javascript2/l2/download.jfif' alt='' ></td>";
+            } 
+            hallchairs  +="</tr>";
+            hall.innerHTML =hallchairs;
+        }
+    </script>
+</body>
+</html>

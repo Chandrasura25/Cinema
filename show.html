@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" name="" id="uname"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" name="" id="pwd"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button onclick="reg()">Submit</button></td>
+        </tr>
+    </table> 
+     <table border="1" width="60%" align="center">
+        <tr>
+            <td>S/N</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Delete</td>
+            <td>Update</td>
+        </tr>
+        <tbody id="l">
+    
+        </tbody>
+    </table>
+<!-- <script>
+
+   </script> -->
+
+    <script>
+         var b = "";
+    if (window.localStorage.ITUser) {
+        jUsers = window.localStorage.getItem("ITUser");
+        Customers = JSON.parse(jUsers);
+        for (i=0; i<Customers.alluser.length; i++){
+            b += "<tr><td>" + (i+1)+ "</td><td>"+ Customers.alluser[i].name+ "</td><td>"+Customers.alluser[i].pwd+"</td><td><button onclick='remove("+i+")'>X</button></td><td><button onclick='update("+i+")'>i</button></td></tr>";
+        }
+        document.getElementById("l").innerHTML=b;
+    }
+         document.getElementById("uname").focus();
+        if (! window.localStorage.ITUser){
+            var Customers = {"alluser":[]};
+        }
+        reg= ()=> {
+            if (window.localStorage.ITUser){
+                jUsers = window.localStorage.getItem("ITUser");
+                Customers =JSON.parse(jUsers);
+            }
+            Customers.alluser.push({"name":uname.value,"pwd":pwd.value});
+            // console.log(Customers);
+            sUser = JSON.stringify(Customers);
+            window.localStorage.setItem("ITUser",sUser);
+            location.reload();
+        }
+        remove = (i) =>{
+            
+            if (confirm("are you sure?")){
+             oldList = JSON.parse(window.localStorage.getItem("ITUser")).alluser;
+            newList=oldList.splice(i,1);
+            window.localStorage.setItem("ITUser", JSON.stringify({"alluser": oldList}));
+            location.reload();
+             }
+        }
+        
+    </script>
+</body>
+</html>

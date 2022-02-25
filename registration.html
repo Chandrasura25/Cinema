@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <!-- <form> -->
+   <b><p class="text-success text-center">Registration Form</p></b>
+    <div class="container">
+        <label for="name" class="form-label text-light">Fullname</label>
+        <input type="text" name="" class="form-control" id="fN" ><br>
+        <label for="email" class="form-label text-light">Email address</label>
+         <input type="email" name="" class="form-control" id="ema"><br>
+         <label for="phone numer" class="form-label text-light">Number</label>
+         <input type="number" name="" class="form-control" id="No"><br>
+         <label for="password" class="form-label text-light">Password</label>
+         <input type="password" class="form-control" placeholder="*******" id="pass"><br>
+         <label for="password" class="form-label text-light">Re-enter Password</label>
+         <input type="password" class="form-control"placeholder="*******" id="pass1"><br>
+         <button id="log"class="btn btn-info" onclick="signUp()">Sign Up</button>
+         <button class="btn btn-secondary" onclick="locate()">Book a Seat</button>
+    </div>
+    <script>
+    if (! window.localStorage.ITUser){
+        var Customers = [];
+        fN.focus();
+    }
+     signUp=()=> {
+        if (window.localStorage.ITUser){
+            jUsers = window.localStorage.getItem("ITUser");
+            Customers =JSON.parse(jUsers);
+        }
+        Customers.push({"fullname":fN.value,"email":ema.value, "number":No.value,"password":pass.value, "password1":pass1.value});
+        console.log(Customers);
+        sUser = JSON.stringify(Customers);
+        window.localStorage.setItem("ITUser",sUser);
+        location.reload();
+        if(fN.value==""&& ema.value==""&& pass.value=="" && No.value==""&&pass1.value==""){
+            alert("fill in details")
+        }
+    }
+    locate=()=>{
+        if (confirm("Did you register?")){
+
+        location.replace("book a seat.html");
+        }
+        else{
+            fN.focus()
+        }
+    }
+</script> 
+    <!-- </form> -->
+    <style>
+        body{
+            background-image: url(/Javascript2/l2/assignment/splash-screen.png);
+            /* background: linear-gradient(lightblue,white); */
+            width: 330px;
+            margin: auto;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+        div{
+            padding-left: 10px;
+        }
+        p{
+            font-size: 20px;
+        }
+        #log{
+            margin-left: 200px;
+            background-color: cadetblue;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+       
+    </style>
+</body>
+</html>

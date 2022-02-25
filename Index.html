@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/Javascript2/bootstrap-icons-1.8.1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        span{
+            font-size: 30px;
+        }
+    </style>
+    <section>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <img src="../assignment/download (1).jfif" class="rounded" style="height: 30px;" alt="">
+            <a class="navbar-brand mx-2 " href="#"  id="adm">Admin</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar nav">
+              <!-- <li class="nav-item mx-2" ><a href="#"class="nav-link">Home</a></li> -->
+              <li class="nav-item mx-2"style="margin-left:20px;" ><a href="../assignment/assignment/cinema2.html" class="nav-link text-secondary">Cinema</a></li>
+              <li class="nav-item mx-3"><a href="hall.html" class="nav-link text-secondary">Hall</a></li>
+              <li class="nav-item mx-2"><a href="book a seat.html"class="nav-link text-secondary">Booking a seat</a></li>
+              <li class="nav-item mx-3"><a href=""class="nav-link text-secondary">Staff Page</a></li>
+              <li class="nav-item mx-3"><a href=""class="nav-link text-secondary">Customer Page</a></li>
+              <li class="nav-item"><a href="#"class="nav-link text-secondary"><input  name="" type="search" id="search" placeholder="Search" class="form-control"></a></li>
+            </ul>
+              </div>
+        </nav>
+    </section>
+    <div id="logo" style="height: 180px;" class="bg-light d-flex">
+        <div style="height: 180px; width: 300px;" class="bg-light mx-3">
+            <label for="Seat">How many seat</label><br>
+            <input type="number" name="" placeholder="" id="noOfSeat"><br>
+            <label for="row">which Row</label><br>
+            <input type="text" name="" placeholder="" id="row"><br>
+            <button id="logg" onclick="send()" class="m-3">Send</button>
+        </div>
+       <div class="d-flex" style="margin-left: 20px;">
+        <span class="card m-2" style="height: 160px; background-color: beige; width:170px" >Admin 
+            <i class="bi-person" style="margin: 40px;"></i>
+        <p id="admno" style="margin-top:-84px; margin-left:80px"></p></span>
+        <span class="m-2 mx-4 card" style="height: 160px; background-color:beige; width:170px;">Staffs  <i class="bi-person-workspace" style="margin: 50px;"></i>
+            <p id="stfno" style="margin-top:-96px; margin-left:83px"></p></span></span>
+           <span class="m-2 mx-4 card" style="height: 160px; background-color: beige; width:170px" >Customers<i class="bi-person-fill" style="margin: 50px;"></i>
+        <p id="cus" style="margin-top:-94px; margin-left:80px"></p></span>
+       </div>
+    </div>
+    <section class="d-flex">
+        <div id="side">
+            <nav class="navbar bg-dark">
+                <ul class="navbar nav">
+                   <li>
+                       <button type="button" class="btn d-block m-3"><a class="nav-link text-muted" href="registration.html">Customer Registration Page</a></button>
+                 </li>
+                   <li><button type="button" class="btn d-block m-3"><a href="login.html" class="nav-link text-muted">Customer Login Page</a></button></li>
+                   <li> <button type="button" class="btn d-block m-3"><a href="stafflogin.html" class="nav-link text-muted">Staff Login Page</a></button></li>
+                   <li><button type="button" class="btn d-block m-3"><a href="adminreg.html" class="nav-link text-muted">Admin Registration Page</a></button></li>
+                    <li><button type="button" class="btn  d-block m-3"><a href="adminlogin.html"class="nav-link text-muted">Admin Login Page</a></button></li>
+                </ul>
+            </nav>
+        </div>
+        <div  class="col-8 p-3 bg-light">
+            <p class="col-4 bg-light text-secondary text-center" style="font-size: 30px;">Customer Page</p>
+            <table border="1" width="60%" align="center" class="table table-bordered table-hover">
+                <thead>
+                    <td>S/N</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <!-- <td>Seat Amount</td> -->
+                    <td>Delete</td>
+                    <td>Update</td>
+                </thead>
+                <tbody id="l">
+            
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table align="center" id="edittable" style="display: none;">
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="" id="uname"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" name="" id="pwd"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><button onclick="reg()" id="sub">Submit</button></td>
+                    <td align="center" ><button id="demo" style="display: none;" onclick="edit()">Save</button></td>
+                </tr>
+            </table> 
+        </div>
+    <script>
+        var b = "";
+        var    editedId
+        if (window.localStorage.ITUser) {
+            jUsers = JSON.parse(window.localStorage.getItem("ITUser"));
+            Seat = JSON.parse(window.localStorage.getItem("Seat"));
+            Customers = jUsers;
+            for (i=0; i<Customers.length; i++){
+                b += "<tr><td>" + (i+1)+ "</td><td>"+ Customers[i].fullname+ "</td><td>"+Customers[i].password+"</td><td><button onclick='remove("+i+")' class='btn'>X</button></td><td><button class='btn btn-secondary' id='upd' onclick='update("+i+")'>i</button></td></tr>";
+            }
+            l.innerHTML = b;
+            cus.innerHTML=i
+        }
+        remove =(i)=>{
+            if (confirm("are you sure")){
+                oldList = JSON.parse(window.localStorage.getItem("ITUser"));
+                oldList.splice(i,1);
+                window.localStorage.setItem("ITUser", JSON.stringify(oldList));
+                location.reload();
+            }
+            }
+            let people=JSON.parse(window.localStorage.getItem("documentation")); 
+           let lperson =people.Document; 
+           for (let i=0;i<lperson.length;i++){
+               adm.innerHTML= lperson[i].fullname;
+           }
+           admno.innerHTML =lperson.length
+
+           jUsers = window.localStorage.getItem("sTUser");
+        Customers = JSON.parse(jUsers);
+        stfno.innerHTML= Customers.length;
+
+        update=(i)=>{     
+            editedId = i  
+            var customer =JSON.parse(window.localStorage.getItem("ITUser"));
+            edittable.style.display ="block";
+            demo.style.display ="block";
+            sub.style.display ="none";
+            side.style.display ="none";
+            uname.value = customer[i].fullname;
+            pwd.value = customer[i].password;
+        }
+        edit =()=>{     
+            side.style.display ="block";
+            edittable.style.display ="block";
+            let myIndex;
+                 customer =JSON.parse(window.localStorage.getItem("ITUser"));
+                customer.splice(editedId, 1,{ 
+                  "fullname":uname.value,
+                  "password":pwd.value,
+                  });
+              result = JSON.stringify(customer);
+              window.localStorage.setItem("ITUser",result);
+              location.reload()     
+
+            //    for( let i =0; i < customer.length; i++){
+            //        if (uname.value == customer[i].fullname && pwd.value == customer[i].password) {
+                       
+            //            myIndex = i;
+            //        }
+            //   }
+            //   console.log(uname.value == customer[i].fullname && pwd.value == customer[i].password);
+            //   console.log(myIndex);
+        }
+
+
+send=()=>{
+    var RegCus = [ ];
+    let ch ={
+        "Seatno":noOfSeat.value,"row":row.value
+    }
+    RegCus.push(ch);
+    datas = window.localStorage.Reg =JSON.stringify(ch);
+    alert("sent");
+    location.reload();
+}
+$(document).ready(function(){
+    $("#search").on("keyup", function () {
+        var value =$(this).val().toLowerCase();
+        $ ("#l tr").filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+        });
+    });
+});
+    </script>
+
+
+
+    </section>
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="assets/vendors/chart.js/Chart.min.js"></script>
+<script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+<script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+<script src="assets/js/off-canvas.js"></script>
+<script src="assets/js/hoverable-collapse.js"></script>
+<script src="assets/js/misc.js"></script>
+<script src="assets/js/settings.js"></script>
+<script src="assets/js/todolist.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

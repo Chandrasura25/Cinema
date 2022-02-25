@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body id="body">
+    <div id="all">
+    <!-- <form action="converter1.html"> -->
+        <fieldset class="container">
+        <legend style="font-size: 20px; color: burlywood;">Login</legend>
+         <span><h3>login to your account</h3></span>
+         <label for="email" class="form-label text-dark ">Email address</label><br>
+         <input type="email" name="" class="form-control" id="email">
+         <label for="password" class="form-label">Password</label><br>
+         <input type="text" name="" class="form-control" id="password" placeholder="********"><br>
+         <button class="btn" onclick="checker()"id="login">Login</button><br>
+         <label for="no account">Don't have an account yet?</label>
+         <input type="button" value="Create an account" onclick="regist()" style="background-color: lightblue; color: white;"><br>
+         <label for="for">Forgot your password?</label><br>
+         <span>Click <button style="background-color: lightblue;">here</button class="btn">to reset your password</span>
+        </fieldset>
+    <!-- </form> -->
+</div>
+<script>
+     checker=() => {
+      lperson=JSON.parse( window.localStorage.getItem("ITUser"));
+         let person = lperson;
+       let Email = email.value;
+       let Password=password.value;
+       for(let i=0; i < person.length; i++){
+            if (person[i].email==Email&&person[i].password==Password ) {
+                alert("welcome");
+                location.replace("cinema.html");
+                break;
+            }
+        }
+        if (Email== ""||Password=="")
+        {
+              alert("fill your password or email");
+                location.reload();
+        }
+       
+       else if (person.email!=Email||person.password!=Password){
+               alert("wrong password or email")
+           }
+    }
+    regist =()=>{
+        location.replace("registration.html")
+    }
+</script>
+    <style>
+  #body{
+    background-image: url(/Javascript2/l2/assignment/download\ \(6\).jfif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#all {
+    margin: 30px 330px;
+}
+#login{
+    margin: 30px ;
+   background-color: lightblue;
+    margin-left: 125px;
+}
+
+    </style>
+</body>
+</html>

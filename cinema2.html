@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema</title>
+</head>
+<body onload="arranger()">
+    <script>
+       arranger=()=> {
+     var oldList = JSON.parse(window.localStorage.getItem("Reg"));
+          tc.value=oldList.Seatno;
+          mr.value=oldList.row;
+
+        noOfChair=tc.value;
+        noPerRow=mr.value;
+       var chairs='';
+       cArranged = 0; 
+        
+          chairs = '<tr>';
+          for(i=0; i<noOfChair; i++ ){
+                 chairs+= `<td><span style="margin:20px:">No ${ i+1}</span><img src="/Javascript2/l2/download.jfif" style="width:120px; height:120px;" alt=""></td>`;
+                 cArranged++;
+                 if (cArranged== noPerRow){
+                     chairs += '</tr><tr>';
+                     cArranged =0;
+                 }
+          }
+          chairs += '</tr>'
+          document.getElementById("hall").innerHTML=chairs;
+      }
+    </script>
+  <input type="text" name="" id="tc" style="display: none;">
+ <input type="text" name="" id="mr" style="display: none;"> 
+ <!-- <button id="arr" onclick="arranger()">Arrange chairs</button> -->
+    <table id="hall">
+    </table>
+
+
+</body>
+</html>

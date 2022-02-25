@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        background-image: url(/Javascript2/l2/assignment/download\ \(7\).jfif);
+        background-size: cover;
+        font-size: 25px;
+        color: beige;
+    }
+  
+</style>
+<body>
+    <table align="center">
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" name="" id="uname" class="form-control m-3"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" name="" id="pwd" class="form-control m-3"></td>
+        </tr>
+        <tr>
+            <td>Position:</td>
+            <td><input type="text" name="" id="post" class="form-control m-3"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button onclick="reg()" id="sub" class="btn btn-success m-2 mx-3">Submit</button></td>
+            <td align="center" ><button id="demo" style="display: none;" onclick="edit()">Save</button></td>
+        </tr>
+    </table> 
+     <table border="1" width="60%" align="center">
+        <tr>
+            <td>S/N</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Position</td>
+            <td>Delete</td>
+            <td>Update</td>
+        </tr>
+        <tbody id="l">
+    
+        </tbody>
+    </table>
+<script>
+    var editedId;
+    var b = "";
+    if (window.localStorage.sTUser) {
+        jUsers = window.localStorage.getItem("sTUser");
+        Customers = JSON.parse(jUsers);
+        for (i=0; i<Customers.length; i++){
+            b += "<tr><td>" + (i+1)+ "</td><td>"+ Customers[i].name+"</td><td>"+Customers[i].pwd+"</td><td>"+Customers[i].post+"<td><button class='btn btn-secondary' onclick='remove("+i+")'>X</button></td><td><button  class='btn btn-secondary' onclick='update("+i+")' >i</button></td></tr>";
+        }
+        document.getElementById("l").innerHTML=b;
+    }
+document.getElementById("uname").focus();
+if (! window.localStorage.sTUser){
+   var Customers = [];
+}
+reg= ()=> {
+   if (window.localStorage.sTUser){
+       jUsers = window.localStorage.getItem("sTUser");
+       Customers =JSON.parse(jUsers);
+   }
+  Customers.push({
+     "name":uname.value,
+     "pwd":pwd.value,
+     "post":post.value});
+  sUser = JSON.stringify(Customers);
+  window.localStorage.setItem("sTUser",sUser);
+  location.reload();
+}
+        remove = (i) =>{
+            oldList = JSON.parse(window.localStorage.getItem("sTUser"));
+            oldList.splice(i,1);
+            window.localStorage.setItem("sTUser", JSON.stringify(oldList));
+            location.reload();
+            }
+        update=(i)=>{
+        //     var customer =JSON.parse(window.localStorage.getItem("sTUser"));
+        //    demo.style.display ="block";
+        //     for (let i  = 0;  i<customer.length; i++) 
+        //     {
+        //         if (a == i) {
+        //             uname.value = customer[i].name;
+        //             pwd.value = customer[i].pwd;
+        //             post.value =customer[i].post;
+        //         }
+                
+        //     }
+            // demo.innerHTML='<span onclick="editcustomer()">edit</span>';
+        editedId=i;
+            var customer =JSON.parse(window.localStorage.getItem("sTUser"));
+            demo.style.display ="block";
+            sub.style.display ="none";
+             uname.value = customer[i].name;
+             pwd.value = customer[i].pwd;
+             post.value =customer[i].post;
+        }
+        
+        edit =()=>{
+           
+                 customer =JSON.parse(window.localStorage.getItem("sTUser"));
+           
+              customer.splice(editedId, 1,{
+                  "name":uname.value,
+                  "pwd":pwd.value,
+                  "post":post.value
+                  });
+              result = JSON.stringify(customer);
+              window.localStorage.setItem("sTUser",result);
+              location.reload()
+        }
+    </script>
+</body>
+</html>
