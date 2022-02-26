@@ -11,13 +11,13 @@
     <div id="all">
     <!-- <form action="converter1.html"> -->
         <fieldset class="container">
-        <legend style="font-size: 20px; color: burlywood;">Login</legend>
-         <span><h3>login to your account</h3></span>
+        <!-- <legend style="font-size: 20px; color: burlywood;">Login</legend> -->
+         <span><h3 class="m-4">login to your account</h3></span>
          <label for="email" class="form-label text-dark ">Email address</label><br>
          <input type="email" name="" class="form-control" id="email">
          <label for="password" class="form-label">Password</label><br>
-         <input type="text" name="" class="form-control" id="password" placeholder="********"><br>
-         <button class="btn" onclick="checker()"id="login">Login</button><br>
+         <input type="password" name="" class="form-control" id="password" placeholder="********"><br>
+         <button class="btn btn-danger" onclick="checker()"id="login">Login</button><br>
          <label for="no account">Don't have an account yet?</label>
          <input type="button" value="Create an account" onclick="regist()" style="background-color: lightblue; color: white;"><br>
          <label for="for">Forgot your password?</label><br>
@@ -62,8 +62,7 @@
     margin: 30px 330px;
 }
 #login{
-    margin: 30px ;
-   background-color: lightblue;
+    margin: 30px;
     margin-left: 125px;
 }
 

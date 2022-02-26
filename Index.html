@@ -76,7 +76,7 @@
                     <td>S/N</td>
                     <td>Username</td>
                     <td>Password</td>
-                    <!-- <td>Seat Amount</td> -->
+                    <td>Seat Amount</td>
                     <td>Delete</td>
                     <td>Update</td>
                 </thead>
@@ -109,7 +109,7 @@
             Seat = JSON.parse(window.localStorage.getItem("Seat"));
             Customers = jUsers;
             for (i=0; i<Customers.length; i++){
-                b += "<tr><td>" + (i+1)+ "</td><td>"+ Customers[i].fullname+ "</td><td>"+Customers[i].password+"</td><td><button onclick='remove("+i+")' class='btn'>X</button></td><td><button class='btn btn-secondary' id='upd' onclick='update("+i+")'>i</button></td></tr>";
+                b += "<tr><td>" + (i+1)+ "</td><td>"+ Customers[i].fullname+ "</td><td>"+Customers[i].password+"</td><td>"+ Customers[i].Seat+ "</td><td><button onclick='remove("+i+")' class='btn'>X</button></td><td><button class='btn btn-secondary' id='upd' onclick='update("+i+")'>i</button></td></tr>";
             }
             l.innerHTML = b;
             cus.innerHTML=i

@@ -15,7 +15,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1" >How many seat?</span>
             </div>
-            <input type="text"  id="seat" onkeyup="buy()" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text"  id="sv" onkeyup="buy()" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
           </div>
           <div class="input-group m-3">
             <div class="input-group-prepend">
@@ -30,40 +30,26 @@
     
 
     <script>
-     let fValue = seat.value;
-     sV.value = fValue*1000
+  dat =JSON.parse(window.localStorage.getItem("ITUser"));
+    for(let i=0; i<dat.length;i++){
+ // alert(dat[i].Seat)
+ }
    buy =() =>{
-      let fValue = seat.value;
-      sV.value = fValue*1000
+      sV.value = sv.value*1000
   }
 login=()=>{
   var Seat = [ ];
-    let seat = ({ "Seatamount":fValue,"amount":sV.value })
+    let seat = ({"Seatamount":sv.value,"amount":sV.value })
     Seat.push(seat);
     datas = window.localStorage.Seat =JSON.stringify(Seat);
  // location.replace("hall.html")
 }
 logining =()=>{
+  if (confirm("Have you paid?")){
   location.replace("login.html")
+  }
 }
      
     </script>
-    <!-- <style>
-        button{
-            margin: 20px;
-           
-        }
-        button:hover{
-            background-color: honeydew;
-            border-radius: 10px 20px 10px 5px;
-        }
-        h3{
-            margin: 30px;
-        }
-        input{
-            width:250px;
-            height: 40px;
-        }
-    </style> -->
 </body>
 </html>
