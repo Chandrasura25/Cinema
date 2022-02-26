@@ -25,7 +25,7 @@
           </div>
         </form>
       </nav>
-      <button onclick="login()" type="button" class="btn btn-secondary mx-5">Pay Up</button>
+      <a href="payment.html"><button onclick="login()" type="button" class="btn btn-secondary mx-5">Pay Up</button></a>
       <button onclick="logining()" type="button" class="btn btn-secondary mx-5">Log in</button>
     
 
@@ -41,7 +41,7 @@ login=()=>{
     let seat = ({ "Seatamount":fValue,"amount":sV.value })
     Seat.push(seat);
     datas = window.localStorage.Seat =JSON.stringify(Seat);
- location.replace("hall.html")
+ // location.replace("hall.html")
 }
 logining =()=>{
   location.replace("login.html")

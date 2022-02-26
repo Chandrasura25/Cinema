@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Home</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" type="text/css" href="wowjs/css/libs/animate.css">
+
+
+
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+    <script type="text/javascript" src="wowjs/wow.min.js"></script>
+
+
+    <script>
+        new WOW().init();
+    </script>
+
+</head>
+    <body style="background-image: url(/Javascript2/l2/classwork/download.png); background-size: cover;">
+   <center>
+    <form id="paymentForm" style="margin-top: 100px;">
+      <div class="form-group">
+        <label for="email" class="">Email Address</label>
+        <input type="email" class="form-control h-50 w-50" id="emailaddress" required />
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="tel" id="amount"class="form-control h-50 w-50" required />
+      </div>
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text"class="form-control h-50 w-50" id="firstname" />
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text"class="form-control h-50 w-50" id="lastname" />
+      </div>
+      <div class="form-submit">
+        <button type="submit" onclick="payWithPaystack()" class="btn btn-primary m-3" style="width: 55px"> Pay </button>
+      </div>
+    </form>
+   </center>
+<script src="https://js.paystack.co/v1/inline.js"></script> 
+
+    </body>
+</html>
+
+
+
+    <!-- Jquery JS-->
+
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <!-- <script src="js/main.js"></script> -->
+    
+    <script>	
+    var myindex;
+     pay =JSON.parse(window.localStorage.getItem("Seat"));
+     for (var i =0;i<pay.length;i++){
+        amount.value="#" + pay[i].amount;
+     }
+     
+     customer =JSON.parse(window.localStorage.getItem("ITUser"));
+     for (var i =0; i <customer.length; i++) {
+       let myindex=customer[i];
+     }
+     
+     emailaddress.value=myindex.email;
+     firstname.value=myindex.firstname;
+     lastname.value=myindex.lastname;
+    
+	const paymentForm = document.getElementById('paymentForm');
+	paymentForm.addEventListener("submit", payWithPaystack, false);
+	function payWithPaystack(e) {
+	  e.preventDefault();
+	  let handler = PaystackPop.setup({
+	    key: 'pk_test_7899ea70993434a5f69604cd8c55702e7ca41fed', // Replace with your public key
+	    email: document.getElementById("email-address").value,
+	    amount: document.getElementById("amount").value * 100,
+	    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+	    // label: "Optional string that replaces customer email"
+	    onClose: function(){
+	      alert('Window closed.');
+	    },
+	    callback: function(response){
+	      let message = 'Payment complete! Reference: ' + response.reference;
+	      alert(message);
+	    }
+	  });
+	  handler.openIframe();
+	}
+</script>
